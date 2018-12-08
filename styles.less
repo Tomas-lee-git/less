@@ -1,0 +1,20 @@
+// variables
+@color:pink;
+@bgColor:skyblue;
+@width:100%;
+.wrap{
+    color:@color;
+    background-color:@bgColor;
+    width:@width;
+    height:@width;
+}
+
+// mixins
+.border{
+    border-top: 1px solid rgb(168, 6, 6);
+    border-bottom: 1px solid rgb(139, 176, 190);
+}
+#menu a{
+    color:#111;
+    .border();
+}

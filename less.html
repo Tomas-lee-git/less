@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Less</title>
+    <link rel="stylesheet/less" type="text/css" href="./styles.less" />
+    <!-- set options before less.js script -->
+    <script>
+        less = {
+            env: "development",
+            async: false,
+            fileAsync: false,
+            poll: 1000,
+            functions: {},
+            dumpLineNumbers: "comments",
+            relativeUrls: false,
+            rootpath: ":/a.com/"
+        };
+    </script>
+    <!-- <script src="./less.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.8.1/less.min.js" ></script>
+</head>
+
+<body class="wrap">
+    <div>hello</div>
+    <div id="menu">hi
+        <a href="www.google.com">google</a>
+    </div>
+    <div>cao</div>
+</body>
+
+</html>
