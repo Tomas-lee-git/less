@@ -6,5 +6,6 @@ google同源安全策略的关闭和开启
 
 关闭：
 open -n /Applications/Google\ Chrome.app/ --args --disable-web-security  --user-data-dir=/Users/****/****/MyChromeDevUserData 
+
 开启：
 Chrome.app/ --args --enable-web-security  --user-data-dir=/Users/****/****/MyChromeDevUserData 
