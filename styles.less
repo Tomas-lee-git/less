@@ -72,3 +72,19 @@ searching from the current scope upwards. This is similar to css itself where th
    color:#efefef;
    background-color:$color;
 }
+// parent selectors
+body{
+    .forth{
+         font-size:20px;
+         color:#000;
+         & p:first-child{
+             color:red;
+         }
+         & p:last-child{
+            color:green;
+        }
+        &:hover{
+            font-size: 50px;
+        }
+     } 
+}
