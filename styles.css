@@ -1,0 +1,36 @@
+.wrap {
+  color: pink;
+  background-color: #428bca;
+  width: 100%;
+  height: 100%;
+}
+.border {
+  border-top: 1px solid #a80606;
+  border-bottom: 1px solid #8bb0be;
+}
+#menu a {
+  color: yellowgreen;
+}
+#menu a:hover {
+  color: #3071a9;
+}
+.banner {
+  color: yellow;
+}
+body {
+  background: url("images/2.jpg");
+}
+body {
+  background-color: red;
+}
+body {
+  background-color: blue;
+}
+/*
+When defining a variable twice, the last definition of the variable is used, 
+searching from the current scope upwards. This is similar to css itself where the last property inside a definition is used to determine the value.
+*/
+.first {
+  color: #efefef;
+  background-color: $color;
+}
