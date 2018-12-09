@@ -1,47 +1,47 @@
 // variables
-@color:pink;
-@bgColor:skyblue;
-@width:100%;
-@link-color:#428bca;
-@link-hover-color:darken(@link-color,10%);
-.wrap{
-    color:@color;
-    background-color:@link-color;
-    width:@width;
-    height:@width;
+@color: pink;
+@bgColor: skyblue;
+@width: 100%;
+@link-color: #428bca;
+@link-hover-color: darken(@link-color, 10%);
+.wrap {
+    color: @color;
+    background-color: @link-color;
+    width: @width;
+    height: @width;
 }
 
-.border{
+.border {
     border-top: 1px solid rgb(168, 6, 6);
     border-bottom: 1px solid rgb(139, 176, 190);
 }
-#menu a{
-    color:yellowgreen;
-    &:hover{
-        color:@link-hover-color;
-    }
 
+#menu a {
+    color: yellowgreen;
+    &:hover {
+        color: @link-hover-color;
+    }
 }
+
 // selectors
-@my-selector:banner;
-.@{my-selector}{
+@my-selector: banner;
+.@{my-selector} {
     color: yellow;
 }
 
 // urls
-@images:"./images";
-body{
+@images: "./images";
+body {
     background: url("@{images}/2.jpg")
 }
 
 // import Statements
-@themes:"../../src/themes";
+@themes: "../../src/themes";
 // @import "@{themes}/tidal-wave.less"
-
 // properties
-@bg:background;
-body{
-    @{bg}-color:red;
+@bg: background;
+body {
+    @{bg}-color: red;
 }
 
 // variable variables
@@ -50,76 +50,91 @@ body{
 // body{
 //     @{bgc}-color:blue;
 // }
-
 // lazy evaluation
 // variables do not have to be declared before being used.
-@c:bg;
-body{
-    @{bgc}-color:blue;
+@c: bg;
+body {
+    @{bgc}-color: blue;
 }
-@bgc:@@c;
-@bgc:border;
-@bgc:background;
+
+@bgc: @@c;
+@bgc: border;
+@bgc: background;
 /*
 When defining a variable twice, the last definition of the variable is used, 
 searching from the current scope upwards. This is similar to css itself where the last property inside a definition is used to determine the value.
 */
-@bgc:border;
-@bgc:background;
 
+@bgc: border;
+@bgc: background;
 // Properties as Variables (NEW!)
-.first{
-   color:#efefef;
-   background-color:$color;
+.first {
+    color: #efefef;
+    background-color: $color;
 }
+
 // parent selectors
-body{
-    .forth{
-         font-size:20px;
-         color:#000;
-         & p:first-child{
-             color:red;
-         }
-         & p:last-child{
-            color:green;
-        }
-        &:hover{
+body {
+    .forth {
+        font-size: 20px;
+        color: #000; //  & p:first-child{
+        //      color:red;
+        //  }
+        //  & p:last-child{
+        //     color:green;
+        // }
+        &:hover {
             font-size: 50px;
         }
-     } 
+    }
 }
+
 // Combinatorial Explosion
 // & can also be used to generate every possible permutation of selectors in a comma separated list:
-p, a, ul, li {
+p,
+a,
+ul,
+li {
     border-top: 2px dotted #366;
-    & + & {
-      border-top: 0;
+    &+& {
+        border-top: 0;
     }
-  }
+}
+
 //   This expands to all possible (16) combinations of the specified elements:
-  
-  p,
-  a,
-  ul,
-  li {
+p,
+a,
+ul,
+li {
     border-top: 2px dotted #366;
-  }
-  p + p,
-  p + a,
-  p + ul,
-  p + li,
-  a + p,
-  a + a,
-  a + ul,
-  a + li,
-  ul + p,
-  ul + a,
-  ul + ul,
-  ul + li,
-  li + p,
-  li + a,
-  li + ul,
-  li + li {
+}
+
+p+p,
+p+a,
+p+ul,
+p+li,
+a+p,
+a+a,
+a+ul,
+a+li,
+ul+p,
+ul+a,
+ul+ul,
+ul+li,
+li+p,
+li+a,
+li+ul,
+li+li {
     border-top: 0;
-  }
-  
+}
+
+//extends
+.forth {
+    p {
+        &:extend(.color);
+    }
+}
+
+.color {
+    color: pink;
+}
