@@ -325,3 +325,22 @@ li+li {
 }
 // Now if we call .mixin with a single argument, we will get the output of the first definition, but if we call it with two arguments, we will get the second definition, namely @a faded to @b.
 
+
+// Using Mixins as Functions
+
+.average(@x, @y) {
+    @result: ((@x + @y) / 2);
+  }
+  
+  div {
+    // call a mixin and look up its "@return" value
+    padding:.average(10x,30px)[@result]
+  }
+//   Results in:
+  
+  div {
+    padding: 20px;
+  }
+
+//   Overriding mixin values
+// If you have multiple matching mixins, all rules are evaluated and merged, and the last matching value with that identifier is returned. This is similar to the cascade in CSS, and it allows you to "override" mixin values.
