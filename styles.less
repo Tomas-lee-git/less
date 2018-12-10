@@ -407,4 +407,13 @@ li+li {
 .class {
   .truth(40); // Will not match any of the above definitions.
 }
-  
+// Guard Logical Operators
+
+// Use the and keyword to combine guards:
+.mixin(@a) when (isnumber(@a)) and (@a > 0) { ... }
+
+// You can emulate the or operator by separating guards with a comma ,. If any of the guards evaluate to true, it's considered a match:
+.mixin(@a) when (@a > 10), (@a < -10) { ... }
+
+// Use the not keyword to negate conditions:
+.mixin(@b) when not (@b > 0) { ... }
