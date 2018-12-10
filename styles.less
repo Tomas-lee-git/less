@@ -241,6 +241,26 @@ li+li {
 #seventh{
     .length(500px)
 }
+// Parametric mixins can also have default values for their parameters:
 #seventh{
     .length()
 }
+
+// Mixins with Multiple Parameters, It is recommended to use semicolon. 
+.mixin(@color; @padding: 2) {
+    color-2: @color;
+    padding-2: @padding;
+  }
+
+//  Named Parameters ,can be referenced by its name and they do not have to be in any special order
+.mixin(@color: black; @margin: 10px; @padding: 20px) {
+    color: @color;
+    margin: @margin;
+    padding: @padding;
+  }
+  .class1 {
+    .mixin(@margin: 20px; @color: #33acfe);
+  }
+  .class2 {
+    .mixin(#efca44; @padding: 40px); 
+  }
