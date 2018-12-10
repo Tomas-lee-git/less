@@ -434,3 +434,26 @@ li+li {
 // ispercentage
 // isem
 // isunit
+
+
+// Variable variables in lookups
+// The lookup value that is returned can itself be variable. As in, you can write:
+
+@config: {
+  @dark: {
+    primary: darkblue;
+  }
+  @light: {
+    primary: lightblue;
+  }
+}
+
+.box {
+  @lookup: dark;
+  color: @config[@@lookup][primary];
+}
+// This will output:
+
+.box {
+  color: darkblue;
+}
