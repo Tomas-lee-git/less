@@ -213,3 +213,21 @@ li+li {
 #namespace {
     .mixin() when (@mode = huge) { /* */ }
   }
+
+  //!important 
+
+  .foo (@bg: #f5f5f5, @color: #900) {
+    background: @bg;
+    color: @color;
+  }
+  .unimportant {
+    .foo();
+  }
+  .important {
+    .foo() !important;
+  }
+// result in
+  .important {
+    background: #f5f5f5 !important;
+    color: #900 !important;
+  }
