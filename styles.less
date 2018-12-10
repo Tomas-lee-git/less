@@ -396,4 +396,15 @@ li+li {
     background-color: white;
     color: #555;
   }
+
+//   Guard Comparison Operators
+
+.truth(@a) when (@a) { ... }
+.truth(@a) when (@a = true) { ... }
+
+// Any value other than the keyword true is false:
+
+.class {
+  .truth(40); // Will not match any of the above definitions.
+}
   
