@@ -140,66 +140,76 @@ li+li {
 }
 
 // extend "all"
-.f{
-    color:green;
-    font-size:20px;
-    font-style:italic;
+.f {
+    color: green;
+    font-size: 20px;
+    font-style: italic;
 }
-.fifth:extend(.fifth all){}
+
+.fifth:extend(.fifth all) {}
 
 // Top level extend matches everything including selectors inside nested media:
-
-.f{
-    color:green;
-    font-size:20px;
-    font-style:italic;
-    span{
-        color:red;
-        font-size:30px;
+.f {
+    color: green;
+    font-size: 20px;
+    font-style: italic;
+    span {
+        color: red;
+        font-size: 30px;
     }
 }
-.fifth:extend(.f span){}
 
-.fifth{
-    &:extend(f,span);
-    span{
-        color:black;
+.fifth:extend(.f span) {}
+
+.fifth {
+    &:extend(f,
+    span);
+    span {
+        color: black;
     }
 }
 
 // mixin
-.blue-italic(){
-    color:blue;
+.blue-italic() {
+    color: blue;
     font-style: italic;
     font-size: 25px;
-    box-shadow+:inset 0 0 10px #555;
+    box-shadow+: inset 0 0 10px #555;
 }
 
 // Merge
-.sixth{
+.sixth {
     .blue-italic();
     box-shadow+: 0 0 10px #555;
 }
 
 // mixins
-.hover(){
-    &:hover{
-        font-size:40px;
-        color:darkblue;
+.hover() {
+    &:hover {
+        font-size: 40px;
+        color: darkblue;
     }
 }
 
-.sixth{
+.sixth {
     .hover();
 }
+
 // Namespaces
-#my-library{
-    .i-color(){
-       i{
-        color: #fff;
-       }
+#my-library {
+    .i-color() {
+        i {
+            color: #fff;
+        }
     }
 }
-.sixth{
+
+.sixth {
     #my-library>.i-color();
 }
+
+// Guarded Namespaces
+
+#namespace {
+    .mixin() when (@mode = huge) { /* */ }
+  }
