@@ -275,3 +275,53 @@ li+li {
     // @rest is bound to arguments after @a
     // @arguments is bound to all arguments
  }
+
+//  Pattern-matching
+.mixin(@s; @color) { ... }
+
+.class {
+  .mixin(@switch; #888);
+}
+// Now let's say we want .mixin to behave differently, based on the value of @switch, we could define .mixin as such:
+
+.mixin(dark; @color) {
+  color: darken(@color, 10%);
+}
+.mixin(light; @color) {
+  color: lighten(@color, 10%);
+}
+.mixin(@_; @color) {
+  display: block;
+}
+// Now, if we run:
+
+@switch: light;
+
+.class {
+  .mixin(@switch; #888);
+}
+// We will get the following CSS:
+
+.class {
+  color: #a2a2a2;
+  display: block;
+}
+// Where the color passed to .mixin was lightened. If the value of @switch was dark, the result would be a darker color.
+
+// Here's what happened:
+
+// The first mixin definition didn't match because it expected dark as the first argument.
+// The second mixin definition matched, because it expected light.
+// The third mixin definition matched because it expected any value.
+// Only mixin definitions which matched were used. Variables match and bind to any value. Anything other than a variable matches only with a value equal to itself.
+
+// We can also match on arity, here's an example:
+
+.mixin(@a) {
+  color: @a;
+}
+.mixin(@a; @b) {
+  color: fade(@a; @b);
+}
+// Now if we call .mixin with a single argument, we will get the output of the first definition, but if we call it with two arguments, we will get the second definition, namely @a faded to @b.
+
