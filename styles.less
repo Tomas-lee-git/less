@@ -97,7 +97,7 @@ ul,
 li {
     border-top: 2px dotted #366;
     &+& {
-        border-top: 0;
+        border-top: 0px;
     }
 }
 
@@ -231,3 +231,16 @@ li+li {
     background: #f5f5f5 !important;
     color: #900 !important;
   }
+
+//   Parametric Mixins
+.length(@length:200px){
+    width: @length;
+    height: @length/2;
+    font-size: @length/5;
+}
+#seventh{
+    .length(500px)
+}
+#seventh{
+    .length()
+}
