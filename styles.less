@@ -480,3 +480,30 @@ li+li {
 // More than one keyword per @import is allowed, you will have to use commas to separate the keywords:
 
 // Example: @import (optional, reference) "foo.less";
+
+// @plugin At-Rules
+
+// my-plugin.js
+
+module.exports = {
+    install: function(less, pluginManager, functions) {
+        functions.add('pi', function() {
+            return Math.PI;
+        });
+    }
+};
+
+install: function(less, pluginManager, functions) {
+    functions.add('pi', function() {
+        return Math.PI;
+    });
+}
+@plugin "mu-plugin";
+.show-me-pi {
+  value: pi();
+}
+// You would get:
+
+.show-me-pi {
+  value: 3.141592653589793;
+}
