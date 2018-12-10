@@ -344,3 +344,56 @@ li+li {
 
 //   Overriding mixin values
 // If you have multiple matching mixins, all rules are evaluated and merged, and the last matching value with that identifier is returned. This is similar to the cascade in CSS, and it allows you to "override" mixin values.
+
+// Unnamed lookups
+
+@dr: {
+    value: foo;
+  }
+  .box {
+    my-value: @dr[];
+  }
+//   This outputs:
+  
+  .box {
+    my-value: foo;
+  }
+
+//   Recursive Mixins
+.loop(@counter) when (@counter > 0) {
+    width: (10px * @counter); // code for each iteration
+    .loop((@counter - 1));    // next iteration
+  }
+  
+  div {
+    .loop(5); // launch the loop
+  }
+
+
+//   Mixin Guards
+//   via guarded mixins instead of if/else statements, in the vein of @media query feature specifications.
+
+.mixin(@a) when (lightness(@a) >= 50%) {
+    background-color: black;
+  }
+  .mixin(@a) when (lightness(@a) < 50%) {
+    background-color: white;
+  }
+  .mixin(@a) {
+    color: @a;
+  }
+//   The key is the when keyword, which introduces a guard sequence (here with only one guard). Now if we run the following code:
+  
+  .class1 { .mixin(#ddd) }
+  .class2 { .mixin(#555) }
+//   Here's what we'll get:
+  
+  .class1 {
+    background-color: black;
+    color: #ddd;
+  }
+  .class2 {
+    background-color: white;
+    color: #555;
+  }
+  
