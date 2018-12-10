@@ -264,3 +264,14 @@ li+li {
   .class2 {
     .mixin(#efca44; @padding: 40px); 
   }
+
+//@arguments Variable
+.font(@size:30px;@color:red;@style:italic){
+    font:@argument;
+}
+
+// Advanced Arguments and the @rest Variable
+.mixin(@a; @rest...) {
+    // @rest is bound to arguments after @a
+    // @arguments is bound to all arguments
+ }
