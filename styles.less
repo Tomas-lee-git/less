@@ -457,3 +457,26 @@ li+li {
 .box {
   color: darkblue;
 }
+
+// @import At-Rules
+
+// In standard CSS, @import at-rules must precede all other types of rules. But Less does not care where you put @import statements.
+
+// Import Options
+
+// Less offers several extensions to the CSS @import CSS at-rule to provide more flexibility over what you can do with external files.
+
+// Syntax: @import (keyword) "filename";
+
+// The following import options have been implemented:
+
+// reference: use a Less file but do not output it
+// inline: include the source file in the output but do not process it
+// less: treat the file as a Less file, no matter what the file extension
+// css: treat the file as a CSS file, no matter what the file extension
+// once: only include the file once (this is default behavior)
+// multiple: include the file multiple times
+// optional: continue compiling when file is not found
+// More than one keyword per @import is allowed, you will have to use commas to separate the keywords:
+
+// Example: @import (optional, reference) "foo.less";
